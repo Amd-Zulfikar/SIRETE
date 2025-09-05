@@ -30,12 +30,12 @@ Route::controller(RoleController::class)->group(function () {
 Route::controller(EmployeeController::class)->group(function () {
         // route for view controller user
         Route::get('/admin/employee', 'index')->name('index.employee');
-        // Route::get('/admin/role/add', 'role_add')->name('add.role');
-        // Route::get('/admin/role/edit/{id},', [RoleController::class, 'role_edit'])->name('edit.role');
+        Route::get('/admin/employee/add', 'employee_add')->name('add.employee');
+        Route::get('/admin/employee/edit/{id},', [EmployeeController::class, 'employee_edit'])->name('edit.employee');
         // Route::get('/role/search', 'search')->name('role.search');
         // route for function controller role
-        // Route::post('/admin/role/store', 'store')->name('store.role');
-        // Route::post('/role/update/{id}', 'update')->name('update.role');
+        Route::post('/admin/employee/store', 'store')->name('store.employee');
+        Route::post('/admin//employee/update/{id}', 'update')->name('update.employee');
         // Route::get('/role/delete/{id}', 'delete_role')->name('delete.role');
     });
 

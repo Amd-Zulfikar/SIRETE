@@ -71,7 +71,7 @@
                        @forelse($roles as $role)
                       <td>{{ $role->name }}</td>
                       <td>{{ $role->keterangan }}</td>
-                      <td style="text-align: center;"> 
+                      <td> 
                         <a class="btn btn-info btn-sm" href="{{ route('edit.role', $role->id) }}">
                               <i class="fas fa-pencil-alt">
                               </i>

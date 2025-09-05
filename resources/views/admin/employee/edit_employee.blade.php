@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <!-- Content Wrapper. Contains page content -->
+    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -14,7 +14,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Role</li>
+              <li class="breadcrumb-item active">Employee</li>
               <li class="breadcrumb-item active">Add</li>
             </ol>
           </div>
@@ -42,38 +42,37 @@
           </button>
         </div>
       @endif
-        <form method="POST" action="{{ route('store.role') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('update.employee', [$employee->id]) }}" enctype="multipart/form-data">
           @csrf
           <div class="row">
             <div class="col-md-12">
               <!-- general form elements disabled -->
               <div class="card card-secondary">
                 <div class="card-header">
-                  <h3 class="card-title">Tambah Role</h3>
+                  <h3 class="card-title">Tambah Pegawai</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                        <label for="">Nama Role</label>
-                        <input name="name" type="text" class="form-control" placeholder="Masukan Nama Role" required>
+                        <label for="">Nama Pegawai</label>
+                        <input name="name" type="text" value="{{ $employee->name }}" class="form-control" placeholder="Masukan Nama Pegawai" required>
                         <small>{{ $errors->first('name')}}</small>
                         </div>
                       </div>
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                      <label for="">Keterangan</label>
-                      <input name="keterangan" type="text" class="form-control"  placeholder="Masukan Keterangan" required>
-                      <small>{{ $errors->first('keterangan')}}</small>
+                      <label for="">Contact</label>
+                      <input name="contact" type="text" value="{{ $employee->contact }}" class="form-control"  placeholder="Masukan contact" required>
+                      <small>{{ $errors->first('contact')}}</small>
                       </div>
                       </div>
                     </div>
                 </div>
                 <div class="card-footer me-2">
-                    <a href="{{route ('index.role') }}" class="btn btn-danger">Kembali</a>
+                    <a href="{{route ('index.employee') }}" class="btn btn-danger">Kembali</a>
                     <input type="submit" value="Simpan" class="btn btn-success ">
                 </div>      
         </form>
@@ -89,4 +88,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
 @endsection

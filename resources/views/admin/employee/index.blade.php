@@ -14,7 +14,7 @@
               
             </td> -->
             <ol class="breadcrumb float-sm-left">
-              <a type="button" class="btn btn-block bg-gradient-primary" onclick="location.href=''">Tambah Data</a>
+              <a type="button" class="btn btn-block bg-gradient-primary" onclick="location.href='{{ route ('add.employee') }}'">Tambah Data</a>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -62,7 +62,7 @@
                   <thead>
                     <tr>
                       <th>employee</th>
-                      <th>Keterangan</th>
+                      <th>contact</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -70,9 +70,9 @@
                     <tr>
                        @forelse($employees as $employee)
                       <td>{{ $employee->name }}</td>
-                      <td>{{ $employee->keterangan }}</td>
-                      <td style="text-align: center;"> 
-                        <a class="btn btn-info btn-sm" href="{{ route('edit.employee', $employee->id) }}">
+                      <td>{{ $employee->contact }}</td>
+                      <td> 
+                        <a class="btn btn-info btn-sm" href="{{ route ('edit.employee', $employee->id) }}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
