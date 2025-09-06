@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -14,13 +14,13 @@
               
             </td> -->
             <ol class="breadcrumb float-sm-left">
-              <a type="button" class="btn btn-block bg-gradient-primary" onclick="location.href='{{ route ('add.employee') }}'">Tambah Data</a>
+              <a type="button" class="btn btn-block bg-gradient-primary" onclick="location.href=''">Tambah Data</a>
             </ol>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">employee</li>
+              <li class="breadcrumb-item active">Account</li>
             </ol>
           </div>
         </div>
@@ -53,7 +53,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-edit"></i>
-                  Data Pegawai
+                  Data Login User
                 </h3>
               </div>
               <!-- card -->
@@ -61,18 +61,23 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Pegawai</th>
-                      <th>contact</th>
+                      <th>Nama Pegawai</th>
+                      <th>Role</th>
+                      <th>Email</th>
+                      <th>Password</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                       @forelse($employees as $employee)
-                      <td>{{ $employee->name }}</td>
-                      <td>{{ $employee->contact }}</td>
+                       @forelse($accounts as $account)
+                      <td>{{ $account->employee->name ?? "" }}</td>
+                      <td>{{ $account->role->name ?? "" }}</td>
+                      <td>{{ $account->email }}</td>
+                      <td>{{ $account->password }}</td>
+                      
                       <td> 
-                        <a class="btn btn-info btn-sm" href="{{ route ('edit.employee', $employee->id) }}">
+                        <a class="btn btn-info btn-sm" href="">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
@@ -87,15 +92,17 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Pegawai</th>
-                      <th>Contact</th>
+                      <th>Nama Pegawai</th>
+                      <th>Role</th>
+                      <th>Email</th>
+                      <th>Password</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
                 </table>
                 <!-- Laravel Pagination -->
                 <div class="mt-2">
-                    {{ $employees->links('pagination::bootstrap-4') }}
+                    {{ $accounts->links('pagination::bootstrap-4') }}
                 </div>
               </div>
               <!-- /.card -->

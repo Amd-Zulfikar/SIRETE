@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -11,6 +12,19 @@ use App\Http\Controllers\Admin\EmployeeController;
 Route::middleware('redirect.role')->get('/', fn()=>view('auth.login'));
 
 Route::middleware(['auth', 'auth.session'])->group(function () {
+
+// Admin
+Route::middleware(['auth','role:admin'])->group(function () {
+        // route for view controller user
+        Route::get('/admin/account', [AccountController::class, 'index'])->name('index.account');
+        // Route::get('/admin/role/add', 'role_add')->name('add.role');
+        // Route::get('/admin/role/edit/{id},', [RoleController::class, 'role_edit'])->name('edit.role');
+        // Route::get('/role/search', 'search')->name('role.search');
+        // route for function controller role
+        // Route::post('/admin/role/store', 'store')->name('store.role');
+        // Route::post('/role/update/{id}', 'update')->name('update.role');
+        // Route::get('/role/delete/{id}', 'delete_role')->name('delete.role');
+    });
     
 // Admin role
 Route::controller(RoleController::class)->group(function () {
@@ -43,6 +57,8 @@ Route::controller(DashboardController::class)->group(function () {
     // route for view controller user
         Route::get('/admin/Dashboard', 'index')->name('admin.dashboard');
         });
+
+
 
 // Drafter
 Route::middleware(['auth','role:drafter'])->prefix('drafter')->group(function(){
